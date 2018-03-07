@@ -1,10 +1,12 @@
 
 #!/bin/bash
 
+GENE=$(pwd)/$1
 EXPR=~/HCASMC/HCASMC_expr
 REV=~/HCASMC/HCASMC_expr/reverse
 GENOTYPES=~/HCASMC/HCASMC_genotypes/
 
+cd 
 
 #check if folder with expression values exist, if not, create
 
@@ -40,6 +42,7 @@ fi
 #gunzip 
 #fi
 
+cd ~/HCASMC/HCASMC_expr
 
 #write R script to get ENSEMBL id, needs biomaRt in R
 
@@ -58,7 +61,7 @@ chmod 775 script.r
 
 #Use awk to append gene names
 
-awk 'NR==FNR {h[$1] = $1; h2[$1] = $2; next} {print h[$1]"\n"}' id_merge.txt $1 > $1.genename
+awk 'NR==FNR {h[$1] = $1; h2[$1] = $2; next} {print h[$1]"\n"}' id_merge.txt $GENE > genename
 
 #remove temporary files
 
@@ -67,11 +70,9 @@ rm script.r
 
 #get gene counts
 
-cd ~/HCASMC/HCASMC_expr
 while read line; do
                 set $line
                 find . -name *gene.count | xargs grep $line > COUNTS.txt
-                sed -E "s/^.\///g" COUNTS.txt | sed -E "s/\/.*\.[0-9]*//g" 
-done < $1.genename
+done < genename
 
-
+sed -E "s/^.\///g" COUNTS.txt | sed -E "s/\/.*\.[0-9]*//g" 
