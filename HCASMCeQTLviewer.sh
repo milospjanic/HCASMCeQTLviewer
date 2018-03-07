@@ -62,7 +62,7 @@ chmod 775 script.r
 
 #Use awk to append gene names
 
-awk 'NR==FNR {h[$1] = $1; h2[$1] = $2; next} {print h[$1]"\n"}' id_merge.txt $GENE > genename
+awk 'NR==FNR {h[$2] = $1; h2[$2] = $2; next} {print h2[$1]}' id_merge.txt $GENE > genename
 
 #remove temporary files
 
