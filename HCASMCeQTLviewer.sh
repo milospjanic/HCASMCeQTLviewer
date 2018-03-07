@@ -7,6 +7,7 @@ REV=~/HCASMC/HCASMC_expr/reverse
 GENOTYPES=~/HCASMC/HCASMC_genotypes/
 
 cd 
+mkdir ~/HCASMC
 
 #check if folder with expression values exist, if not, create
 
