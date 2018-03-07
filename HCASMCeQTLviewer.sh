@@ -19,7 +19,7 @@ cd ~/HCASMC/HCASMC_expr
 
 if [ ! -f $REV ]
 then
-wget https://www.dropbox.com/s/edm0ykexjmue5yf/reverse.zip?dl=0
+wget https://www.dropbox.com/s/edm0ykexjmue5yf/reverse.zip
 gunzip reverse.zip
 fi
 
