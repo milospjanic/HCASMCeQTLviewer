@@ -69,11 +69,35 @@ awk 'NR==FNR {h[$2] = $1; h2[$2] = $2; next} {print h[$1]}' id_merge.txt $GENE >
 rm id_merge.txt
 rm script.r
 
-#get gene counts
+#get gene counts for gene of interest
 
 while read line; do
                 set $line
                 find . -name *gene.count | xargs grep $line > COUNTS.txt
 done < genename
 
-sed -E "s/^.\/reverse\///g" COUNTS.txt | sed -E "s/\/.*\.[0-9]*//g" 
+sed -E "s/^.\/reverse\///g" COUNTS.txt | sed -E "s/\/.*\.[0-9]*//g" > COUNTS.txt.cut
+
+#get total gene counts per sample
+
+find . -name *gene.count | xargs -I % awk 'BEGIN {FS = " "} ; {sum+=$2} END {print sum}' % > TOTAL.txt
+find . -name *gene.count | xargs -I % echo % > SAMPLES.txt 
+
+sed -E "s/^.\/reverse\///g" SAMPLES.txt | sed -E "s/\/.*\.[0-9a-zA-Z]*//g" > SAMPLES.txt.cut
+
+paste SAMPLES.txt.cut TOTAL.txt > TOTALCOUNTS.txt
+
+awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' COUNTS.txt.cut TOTALCOUNTS.txt > TABLE.txt
+
+awk '{print $1 "\t" $2/$4*1000000}' TABLE.txt > TABLE.RPM.txt
+
+#Rcode
+#library(ggplot2)
+#data<-read.table (file="rs12190287", sep="\t",head=T)
+#colnames(data)<-c("Genotype","TCF21 expression")
+#p <- ggplot(data, aes(x=data$"Genotype",y=data$"TCF21 expression")) + geom_boxplot()
+#pdf("rs12190287.pdf")
+#p+scale_x_discrete(limits=c("GG", "CG", "CC"))+geom_jitter(shape=16, position=position_jitter(0.2))+theme(axis.text=element_text(size=24),axis.title=element_text(size=26))+ labs(title = "rs2327433", x="Genotype", y="TCF21 expression") + theme(plot.title = element_text(size = rel(2)))
+#dev.off()
+
+
