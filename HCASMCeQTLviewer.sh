@@ -76,4 +76,4 @@ while read line; do
                 find . -name *gene.count | xargs grep $line > COUNTS.txt
 done < genename
 
-sed -E "s/^.\///g" COUNTS.txt | sed -E "s/\/.*\.[0-9]*//g" 
+sed -E "s/^.\/reverse\///g" COUNTS.txt | sed -E "s/\/.*\.[0-9]*//g" 
