@@ -38,11 +38,13 @@ fi
 
 #check if subfolder with genotypes exists, if not, download from Dropbox link
 
-cd ~/HCASMC/HCASMC_genotypes/vcf/
+cd ~/HCASMC/HCASMC_genotypes/
 
 if [ ! -f $VCF ]
-then
-wget 
+then 
+mkdir ~/HCASMC/HCASMC_genotypes/vcf
+cd ~/HCASMC/HCASMC_genotypes/vcf
+wget https://www.dropbox.com/s/nnytxlbx1v0gh8y/phased_and_imputed.tar
 tar -zvf phased_and_imputed.tar
 fi
 
