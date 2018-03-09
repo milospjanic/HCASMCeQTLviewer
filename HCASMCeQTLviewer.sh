@@ -1,7 +1,7 @@
 
 #!/bin/bash
 
-GENENAME=$1
+GENENAME="$(cat $1)"
 GENE=$(pwd)/$1
 EXPR=~/HCASMC/HCASMC_expr
 REV=~/HCASMC/HCASMC_expr/reverse
