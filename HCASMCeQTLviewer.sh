@@ -5,6 +5,7 @@ GENE=$(pwd)/$1
 EXPR=~/HCASMC/HCASMC_expr
 REV=~/HCASMC/HCASMC_expr/reverse
 GENOTYPES=~/HCASMC/HCASMC_genotypes/
+VCF=~/HCASMC/HCASMC_genotypes/vcf
 
 cd 
 mkdir ~/HCASMC
@@ -37,11 +38,13 @@ fi
 
 #check if subfolder with genotypes exists, if not, download from Dropbox link
 
-#if [ ! -f $REV ]
-#then
-#wget 
-#gunzip 
-#fi
+cd ~/HCASMC/HCASMC_genotypes/vcf/
+
+if [ ! -f $VCF ]
+then
+wget 
+tar -zvf phased_and_imputed.tar
+fi
 
 cd ~/HCASMC/HCASMC_expr
 
@@ -90,6 +93,7 @@ paste SAMPLES.txt.cut TOTAL.txt > TOTALCOUNTS.txt
 awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' COUNTS.txt.cut TOTALCOUNTS.txt > TABLE.txt
 
 awk '{print $1 "\t" $2/$4*1000000}' TABLE.txt > TABLE.RPM.txt
+
 
 #Rcode
 #library(ggplot2)
