@@ -6,6 +6,8 @@ EXPR=~/HCASMC/HCASMC_expr
 REV=~/HCASMC/HCASMC_expr/reverse
 GENOTYPES=~/HCASMC/HCASMC_genotypes/
 VCF=~/HCASMC/HCASMC_genotypes/vcf
+SNP=$1
+CHR=$2
 
 cd 
 mkdir ~/HCASMC
@@ -99,7 +101,13 @@ awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' COUNTS.txt.cut TO
 
 awk '{print $1 "\t" $2/$4*1000000}' TABLE.txt > TABLE.RPM.txt
 
-#
+#create genotype structure
+grep $SNP phased_and_imputed.chr$CHR.vcf > SNP.txt
+grep CHROM phased_and_imputed.chr$CHR.vcf > HEADER.txt
+
+cat HEADER.txt SNP.txt > GENOTYPES.txt
+
+
 #Rcode
 #library(ggplot2)
 #data<-read.table (file="rs12190287", sep="\t",head=T)
