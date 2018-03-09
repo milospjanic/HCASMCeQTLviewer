@@ -24,6 +24,7 @@ cd ~/HCASMC/HCASMC_expr
 if [ ! -f $REV ]
 then
 wget https://www.dropbox.com/s/edm0ykexjmue5yf/reverse.zip
+echo "Unpacking expression files..."
 unzip reverse.zip
 fi
 
