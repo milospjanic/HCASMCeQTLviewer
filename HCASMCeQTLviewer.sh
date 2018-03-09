@@ -1,13 +1,14 @@
 
 #!/bin/bash
 
+GENENAME=$1
 GENE=$(pwd)/$1
 EXPR=~/HCASMC/HCASMC_expr
 REV=~/HCASMC/HCASMC_expr/reverse
 GENOTYPES=~/HCASMC/HCASMC_genotypes/
 VCF=~/HCASMC/HCASMC_genotypes/vcf
-SNP=$1
-CHR=$2
+SNP=$2
+CHR=$3
 
 cd 
 mkdir ~/HCASMC
@@ -116,6 +117,7 @@ ALT="$(awk '{printf $5}' SNP.txt)"
 
 sed -i "s/0|0/$REF$REF/g" SNP.txt
 sed -i "s/0|1/$REF$ALT/g" SNP.txt
+sed -i "s/1|0/$REF$ALT/g" SNP.txt
 sed -i "s/1|1/$ALT$ALT/g" SNP.txt
 
 cat HEADER.txt SNP.txt > GENOTYPES.txt
@@ -145,14 +147,16 @@ awk -f transpose.awk GENOTYPES.txt > GENOTYPES.txt.tr
 #compile two tables 
 
 awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' TABLE.RPM.txt GENOTYPES.txt.tr > FINAL.txt
+cut -f2,4 FINAL.txt > FINAL.txt.cut
 
-#Rcode
-#library(ggplot2)
-#data<-read.table (file="rs12190287", sep="\t",head=T)
-#colnames(data)<-c("Genotype","TCF21 expression")
-#p <- ggplot(data, aes(x=data$"Genotype",y=data$"TCF21 expression")) + geom_boxplot()
-#pdf("rs12190287.pdf")
-#p+scale_x_discrete(limits=c("GG", "CG", "CC"))+geom_jitter(shape=16, position=position_jitter(0.2))+theme(axis.text=element_text(size=24),axis.title=element_text(size=26))+ labs(title = "rs2327433", x="Genotype", y="TCF21 expression") + theme(plot.title = element_text(size = rel(2)))
-#dev.off()
+#ggplot Rcode
+echo "library(ggplot2)
+data<-read.table (file=\"FINAL.txt.cut\", sep=\"\\t\",head=T)
+colnames(data)<-c(\"$SNP Genotype\",\"$GENENAME expression\")
+p <- ggplot(data, aes(x=data\$\"Genotype\",y=data\$\"TCF21 expression\")) + geom_boxplot()
+pdf(\"$SNP.pdf\")
+p+scale_x_discrete(limits=c(\"$REF$REF\", \"$REF$ALT\", \"$ALT$ALT\"))+geom_jitter(shape=16, position=position_jitter(0.2))+theme(axis.text=element_text(size=24),axis.title=element_text(size=26))+ labs(title = \"$SNP\", x=\"$SNP Genotype\", y=\"$GENENAME expression\") + theme(plot.title = element_text(size = rel(2)))
+dev.off()
+"> script.r
 
 
