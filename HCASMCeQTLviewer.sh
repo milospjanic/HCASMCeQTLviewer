@@ -144,7 +144,7 @@ awk -f transpose.awk GENOTYPES.txt > GENOTYPES.txt.tr
 
 #compile two tables 
 
-awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' TABLE.RPM.txt GENOTYPES.txt.tr
+awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' TABLE.RPM.txt GENOTYPES.txt.tr > FINAL.txt
 
 #Rcode
 #library(ggplot2)
