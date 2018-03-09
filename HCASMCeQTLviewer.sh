@@ -101,11 +101,48 @@ awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' COUNTS.txt.cut TO
 
 awk '{print $1 "\t" $2/$4*1000000}' TABLE.txt > TABLE.RPM.txt
 
-#create genotype structure
+#create genotype files
+
 grep $SNP phased_and_imputed.chr$CHR.vcf > SNP.txt
 grep CHROM phased_and_imputed.chr$CHR.vcf > HEADER.txt
 
+
+#clean genotype files
+sed -i -E 's/:[0-9.]*:[0-9.]*,[0-9.]*,[0-9.]*//g' SNP.txt 
+
+#greb reference and alternative aleles
+REF="$(awk '{printf $4}' SNP.txt)"
+ALT="$(awk '{printf $5}' SNP.txt)"
+
+sed -i "s/0|0/$REF$REF/g" SNP.txt
+sed -i "s/0|1/$REF$ALT/g" SNP.txt
+sed -i "s/1|1/$ALT$ALT/g" SNP.txt
+
 cat HEADER.txt SNP.txt > GENOTYPES.txt
+
+#write script for trasposing a matrix in awk
+
+echo "{ 
+    for (i=1; i<=NF; i++)  {
+        a[NR,i] = \$i
+    }
+}
+NF>p { p = NF }
+END {    
+    for(j=1; j<=p; j++) {
+        str=a[1,j]
+        for(i=2; i<=NR; i++){
+            str=str\" \"a[i,j];
+        }
+        print str
+    }
+}
+" > transpose.awk 
+
+awk -f transpose.awk GENOTYPES.txt > GENOTYPES.txt.tr
+
+#compile two tables 
+
 
 
 #Rcode
