@@ -46,6 +46,8 @@ mkdir ~/HCASMC/HCASMC_genotypes/vcf
 cd ~/HCASMC/HCASMC_genotypes/vcf
 wget https://www.dropbox.com/s/nnytxlbx1v0gh8y/phased_and_imputed.tar
 tar -zvf phased_and_imputed.tar
+echo "Unpacking genome vcf files..."
+gunzip phased_and_imputed*
 fi
 
 cd ~/HCASMC/HCASMC_expr
@@ -96,7 +98,7 @@ awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' COUNTS.txt.cut TO
 
 awk '{print $1 "\t" $2/$4*1000000}' TABLE.txt > TABLE.RPM.txt
 
-
+#
 #Rcode
 #library(ggplot2)
 #data<-read.table (file="rs12190287", sep="\t",head=T)
