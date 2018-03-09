@@ -151,7 +151,9 @@ tabsep FINAL.txt
 cut -f2,4 FINAL.txt > FINAL.txt.cut
 
 #ggplot Rcode
+
 echo "library(ggplot2)
+
 data<-read.table (file=\"FINAL.txt.cut\", sep=\"\\t\",head=T)
 colnames(data)<-c(\"$SNP Genotype\",\"$GENENAME expression\")
 p <- ggplot(data, aes(x=data\$\"Genotype\",y=data\$\"TCF21 expression\")) + geom_boxplot()
