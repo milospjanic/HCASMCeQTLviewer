@@ -26,7 +26,7 @@ cd ~/HCASMC/HCASMC_expr
 
 if [ ! -f $REV ]
 then
-wget https://www.dropbox.com/s/edm0ykexjmue5yf/reverse.zip
+#wget https://www.dropbox.com/s/edm0ykexjmue5yf/reverse.zip
 echo "Unpacking expression files..."
 unzip reverse.zip
 fi
@@ -48,7 +48,7 @@ if [ ! -f $VCF ]
 then 
 mkdir ~/HCASMC/HCASMC_genotypes/vcf
 cd ~/HCASMC/HCASMC_genotypes/vcf
-wget https://www.dropbox.com/s/nnytxlbx1v0gh8y/phased_and_imputed.tar
+#wget https://www.dropbox.com/s/nnytxlbx1v0gh8y/phased_and_imputed.tar
 echo "Unpacking genome vcf files..."
 
 tar -xvf phased_and_imputed.tar
