@@ -173,4 +173,4 @@ dev.off()
 "> script.R
 
 chmod 775 script.R
-source script.R
+./script.R
