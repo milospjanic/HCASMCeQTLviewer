@@ -27,6 +27,7 @@ Place the script in your home or any other folder. The script will create ~/HCAS
 </pre>
 
 Pdf outputs are combind box/dot plots with rsID and rsID genotypes on x-axis and GENE normalized expression levels on y-axis (reads per million mapped).
+
 To run the script create the file named **genes** containing the GENE name, and provide it as first argument. Second and third arguments should be SNP and chromosome on which the SNP is located.
 
 <pre>
