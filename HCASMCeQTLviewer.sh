@@ -149,6 +149,11 @@ awk -f transpose.awk GENOTYPES.txt > GENOTYPES.txt.tr
 
 #compile two tables 
 
+mkdir ~/HCASMC/$GENENAME$SNP
+cd ~/HCASMC/$GENENAME$SNP
+cp ~/HCASMC/HCASMC_expr/TABLE.RPM.txt .
+cp cd ~/HCASMC/HCASMC_genotypes/vcf/GENOTYPES.txt.tr .
+
 awk 'NR==FNR {h[$1] = $0; next} {if(h[$1]) print h[$1]"\t"$0}' TABLE.RPM.txt GENOTYPES.txt.tr > FINAL.txt
 tabsep FINAL.txt
 cut -f2,4 FINAL.txt > FINAL.txt.cut
