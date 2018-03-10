@@ -13,11 +13,11 @@ To run the script download the .sh file
 <pre>
 wget https://raw.githubusercontent.com/milospjanic/HCASMCeQTLviewer/master/HCASMCeQTLviewer.sh
 chmod 755 HCASMCeQTLviewer.sh
-/pre>
+</pre>
 
 Place the script in your home or any other folder. The script will create ~/HCASMC as its working folder, and two subfolders: **HCASMC_expr** and **HCASMC_genotypes**. HCASMC_expr will contain per-gene RNAseq read counts for each HCASMC sample, while HCASMC_genotypes contains whole genome sequencing vcf files of HCASMC samples. Script will create subfolder ~/HCASMC/GENE-SNP for each GENE-SNP input combination and place the textual and pdf output files in that folder. Text file **FINAL.txt.cut** contains genotypes and expression levels:
 
-<pre
+<pre>
 29.5578 CC
 34.5678 CG
 42.2207 CC
@@ -33,7 +33,7 @@ cat gene
 SLC22A4
 
 ./HCASMCeQTLviewer.sh gene rs1537373 9 
-<pre>
+</pre>
 
 Script will check if all the expression and genotype data sets are present in **HCASMC_expr** and **HCASMC_genotypes** subfolders and if not it will download them from the repository.
 
