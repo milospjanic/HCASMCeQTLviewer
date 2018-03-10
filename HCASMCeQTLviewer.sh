@@ -160,7 +160,9 @@ cut -f2,4 FINAL.txt > FINAL.txt.cut
 
 #ggplot Rcode
 
-echo "library(\"ggplot2\")
+echo "#!/usr/bin/Rscript
+
+library(\"ggplot2\")
 
 data<-read.table (file=\"FINAL.txt.cut\", sep=\"\\t\",head=T)
 colnames(data)<-c(\"$GENENAME expression\",\"$SNP Genotype\")
