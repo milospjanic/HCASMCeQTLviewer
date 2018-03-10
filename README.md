@@ -8,7 +8,7 @@ RNAseq expression and whole genome sequencing data come from our collection of 5
 
 # Usage
 
-**Examples**
+# Examples
 Example of a strong eQTL for FES gene.
 
 ![alt text](https://github.com/milospjanic/HCASMCeQTLviewer/blob/master/rs2521501.png)
