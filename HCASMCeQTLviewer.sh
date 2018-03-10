@@ -149,8 +149,8 @@ awk -f transpose.awk GENOTYPES.txt > GENOTYPES.txt.tr
 
 #compile two tables 
 
-mkdir ~/HCASMC/$GENENAME$SNP
-cd ~/HCASMC/$GENENAME$SNP
+mkdir ~/HCASMC/$GENENAME_$SNP
+cd ~/HCASMC/$GENENAME_$SNP
 cp ~/HCASMC/HCASMC_expr/TABLE.RPM.txt .
 cp cd ~/HCASMC/HCASMC_genotypes/vcf/GENOTYPES.txt.tr .
 
@@ -170,4 +170,5 @@ p+scale_x_discrete(limits=c(\"$REF$REF\", \"$REF$ALT\", \"$ALT$ALT\"))+geom_jitt
 dev.off()
 "> script.r
 
+chmod 775 script.r
 source script.r
