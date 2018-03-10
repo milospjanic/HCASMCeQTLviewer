@@ -9,3 +9,10 @@ RNAseq expression and whole genome sequencing data come from our collection of 5
 
 **Example usage**
 
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
