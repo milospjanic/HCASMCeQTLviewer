@@ -7,7 +7,8 @@ HCASMCeQTLviewer can be used to quicky check and graph the directionality of SNP
 RNAseq expression and whole genome sequencing data come from our collection of 52 HCASMC cell lines and are part of the upcoming publication. Data repositorie used in this tool are private and are available upon request and will be made public upon publication.
 
 
-**Example usage**
+**Examples**
+Example of an eQTL for FES genes.
 
 ![alt text](https://github.com/milospjanic/HCASMCeQTLviewer/blob/master/rs2521501.png)
 
