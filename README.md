@@ -52,6 +52,6 @@ Example of a weak association for CDKN2B gene.
 
 ![alt text](https://github.com/milospjanic/HCASMCeQTLviewer/blob/master/rs1537373.png)
 
-Example of an eQTL for TCF21 genes.
+Example of an eQTL for TCF21 gene.
 
 ![alt text](https://github.com/milospjanic/HCASMCeQTLviewer/blob/master/rs12190287.png)
