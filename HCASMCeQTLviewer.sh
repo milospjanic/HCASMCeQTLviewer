@@ -49,8 +49,9 @@ then
 mkdir ~/HCASMC/HCASMC_genotypes/vcf
 cd ~/HCASMC/HCASMC_genotypes/vcf
 wget https://www.dropbox.com/s/nnytxlbx1v0gh8y/phased_and_imputed.tar
-tar -zvf phased_and_imputed.tar
 echo "Unpacking genome vcf files..."
+
+tar -zvf phased_and_imputed.tar
 gunzip phased_and_imputed*
 fi
 
