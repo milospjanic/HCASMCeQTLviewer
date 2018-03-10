@@ -170,7 +170,7 @@ p <- ggplot(data, aes(x=data\$\"$SNP Genotype\",y=data\$\"$GENENAME expression\"
 pdf(\"$SNP.pdf\")
 p+scale_x_discrete(limits=c(\"$REF$REF\", \"$REF$ALT\", \"$ALT$ALT\"))+geom_jitter(shape=16, position=position_jitter(0.2))+theme(axis.text=element_text(size=24),axis.title=element_text(size=26))+ labs(title = \"$SNP\", x=\"$SNP Genotype\", y=\"$GENENAME expression\") + theme(plot.title = element_text(size = rel(2)))
 dev.off()
-"> script.r
+"> script.R
 
-chmod 775 script.r
-source script.r
+chmod 775 script.R
+source script.R
