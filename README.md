@@ -8,6 +8,10 @@ RNAseq expression and whole genome sequencing data come from our collection of 5
 
 # Usage
 
+To run the script download the .sh file
+
+<pre>
+wget 
 # Examples
 Example of a strong eQTL for FES gene.
 
