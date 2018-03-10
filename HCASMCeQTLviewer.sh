@@ -105,6 +105,8 @@ awk '{print $1 "\t" $2/$4*1000000}' TABLE.txt > TABLE.RPM.txt
 
 #create genotype files
 
+cd ~/HCASMC/HCASMC_genotypes/vcf
+
 grep $SNP phased_and_imputed.chr$CHR.vcf > SNP.txt
 grep CHROM phased_and_imputed.chr$CHR.vcf > HEADER.txt
 
