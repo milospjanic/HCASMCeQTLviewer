@@ -9,7 +9,7 @@ RNAseq expression and whole genome sequencing data come from our collection of 5
 
 **Example usage**
 
-![alt text]()
+![alt text](https://github.com/milospjanic/HCASMCeQTLviewer/blob/master/rs12190287.png)
 
 ![alt text]()
 
