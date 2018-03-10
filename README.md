@@ -12,7 +12,7 @@ Example of a strong eQTL for FES genes.
 
 ![alt text](https://github.com/milospjanic/HCASMCeQTLviewer/blob/master/rs2521501.png)
 
-Example of an eQTL for FES genes
+Example of an eQTL for SLC22A4 genes
 
 ![alt text](https://github.com/milospjanic/HCASMCeQTLviewer/blob/master/rs273909.png)
 
