@@ -163,8 +163,8 @@ cut -f2,4 FINAL.txt > FINAL.txt.cut
 echo "library(ggplot2)
 
 data<-read.table (file=\"FINAL.txt.cut\", sep=\"\\t\",head=T)
-colnames(data)<-c(\"$SNP Genotype\",\"$GENENAME expression\")
-p <- ggplot(data, aes(x=data\$\"Genotype\",y=data\$\"TCF21 expression\")) + geom_boxplot()
+colnames(data)<-c(\"$GENENAME expression\",\"$SNP Genotype\")
+p <- ggplot(data, aes(x=data\$\"$SNP Genotype\",y=data\$\"$GENENAME expression\")) + geom_boxplot()
 pdf(\"$SNP.pdf\")
 p+scale_x_discrete(limits=c(\"$REF$REF\", \"$REF$ALT\", \"$ALT$ALT\"))+geom_jitter(shape=16, position=position_jitter(0.2))+theme(axis.text=element_text(size=24),axis.title=element_text(size=26))+ labs(title = \"$SNP\", x=\"$SNP Genotype\", y=\"$GENENAME expression\") + theme(plot.title = element_text(size = rel(2)))
 dev.off()
