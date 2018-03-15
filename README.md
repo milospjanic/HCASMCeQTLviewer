@@ -2,7 +2,7 @@
 
 HCASMCeQTLviewer is a combined bash/R/awk script to view eQTL box/dot plots for a specific gene/SNP eQTL association in human coronary artery smooth muscle cells (HCASMC), one of the crucial cell types that are involved in atherosclerotic process of the blood vessel.
 
-HCASMCeQTLviewer can be used to quicky check and graph the **directionality of SNP-gene association** in human coronary artery smooth muscle cells.
+HCASMCeQTLviewer can be used to quicky check and graph the **directionality of any SNP-gene association** in human coronary artery smooth muscle cells.
 
 RNAseq expression and whole genome sequencing data come from our collection of 52 HCASMC cell lines and are part of the upcoming publication. Data repositories used in this tool are private and are available upon request and will be made public upon publication.
 
